@@ -14,6 +14,7 @@ const Column = ({
   scrollEnabled,
   columnWidth,
   onDragStartCallback,
+  loadMore,
   onRowPress = () => {},
 }) => {
   const [rows, setRows] = useState(column.rows);
@@ -32,6 +33,10 @@ const Column = ({
     },
     [column],
   );
+
+  const onLoadMore = () => {
+    loadMore(column)
+  }
 
   const renderRowItem = ({ item, index }) => {
     return (
@@ -83,6 +88,8 @@ const Column = ({
         onScroll={onScroll}
         onScrollEndDrag={onScrollEnd}
         onMomentumScrollEnd={onScrollEnd}
+        onEndReached = {onLoadMore}
+        onEndReachedThreshold = {0.5}
       />
     </View>
   );
