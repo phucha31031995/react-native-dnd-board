@@ -10,7 +10,7 @@ export default StyleSheet.create({
     right: 0,
   },
   invisible: {
-    opacity: 0,
+    opacity: 0.2,
   },
   visible: {
     opacity: 1,
