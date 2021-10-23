@@ -259,7 +259,10 @@ const DraggableBoard = ({
   return (
     <PanGestureHandler
       onGestureEvent={onPanGestureEvent}
-      onHandlerStateChange={onHandlerStateChange}>
+      onHandlerStateChange={onHandlerStateChange}
+      activeOffsetX={[0, 0]}
+      activeOffsetY={[0, 0]}
+      minDist ={0}>
       <Animated.View style={[style.container, boardStyle]}>
         <ScrollView
           ref={scrollViewRef}
