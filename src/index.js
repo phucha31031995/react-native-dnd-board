@@ -20,7 +20,7 @@ import Utils from './commons/utils';
 const { block, call, cond } = Animated;
 
 const SCROLL_THRESHOLD = 50;
-const SCROLL_STEP = 20;
+const SCROLL_STEP = 30;
 
 const DraggableBoard = ({
   repository,
@@ -32,11 +32,13 @@ const DraggableBoard = ({
   activeRowRotation = 8,
   xScrollThreshold = SCROLL_THRESHOLD,
   yScrollThreshold = SCROLL_THRESHOLD,
-  dragSpeedFactor = 1,
+  dragSpeedFactor = 1.5,
   onRowPress = () => { },
   onDragStart = () => { },
   onDragEnd = () => { },
   loadMore = () => {},
+  listFooterComponent,
+  isLoadingMore = {},
   style: boardStyle,
   horizontal = true,
 }) => {
@@ -239,6 +241,8 @@ const DraggableBoard = ({
           onRowPress={onRowPress}
           onDragStartCallback={onDragStart}
           loadMore={loadMore}
+          listFooterComponent={listFooterComponent}
+          isLoadingMore={isLoadingMore}
         />
       );
 

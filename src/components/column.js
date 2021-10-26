@@ -15,6 +15,8 @@ const Column = ({
   columnWidth,
   onDragStartCallback,
   loadMore,
+  listFooterComponent,
+  isLoadingMore,
   onRowPress = () => {},
 }) => {
   const [rows, setRows] = useState(column.rows);
@@ -73,6 +75,10 @@ const Column = ({
     columnRef.current = ref;
     repository.setColumnScrollRef(column.id, columnRef.current);
   };
+  
+  const footer = () => {
+    return listFooterComponent && isLoadingMore && isLoadingMore[column.id] ? listFooterComponent() : null
+  }
 
   return (
     <View style={[style.container, { minWidth: columnWidth }]}>
@@ -90,6 +96,7 @@ const Column = ({
         onMomentumScrollEnd={onScrollEnd}
         onEndReached = {onLoadMore}
         onEndReachedThreshold = {0.5}
+        ListFooterComponent = {footer}
       />
     </View>
   );
